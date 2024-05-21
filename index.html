@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chinese to Pinyin Converter</title>
-    <script src="https://cdn.jsdelivr.net/npm/pinyin/lib/web-pinyin.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -49,6 +48,7 @@
             white-space: pre-wrap;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/pinyin/lib/web-pinyin.js"></script>
 </head>
 <body>
     <div class="container">
@@ -66,8 +66,8 @@
                 return;
             }
             const pinyinResult = window.pinyin(chineseText, { style: window.pinyin.STYLE_TONE2 })
-                                  .map(word => word.join(' '))
-                                  .join('\n');
+                                  .flatMap(word => word)
+                                  .join(' ');
             document.getElementById('pinyinOutput').innerText = pinyinResult;
         }
     </script>
