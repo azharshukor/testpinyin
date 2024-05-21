@@ -48,7 +48,8 @@
             white-space: pre-wrap;
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/pinyin/lib/web-pinyin.js"></script>
+    <!-- Include pinyin.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pinyin/2.10.1/pinyin.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -65,9 +66,9 @@
                 document.getElementById('pinyinOutput').innerText = "Please enter Chinese text.";
                 return;
             }
-            const pinyinResult = window.pinyin(chineseText, { style: window.pinyin.STYLE_TONE2 })
-                                  .flatMap(word => word)
-                                  .join(' ');
+            const pinyinResult = pinyin(chineseText, {
+                style: pinyin.STYLE_TONE2
+            }).flat().join(' ');
             document.getElementById('pinyinOutput').innerText = pinyinResult;
         }
     </script>
